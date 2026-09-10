@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>日本の観光名所ガイド</title>
+
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAKLjisxFelKwIl1_G6MiEO9-ya7Twr5s&callback=initMap&libraries=maps,marker&v=beta"></script>
+
+  </head>
+
+  <body>
+
+    <div id="wrap">
+
+      <!-- ヘッダー -->
+      <header>
+        <h1>
+          <a href="#">日本の観光名所ガイド</a>
+        </h1>
+        <nav>
+          <ul>
+            <li><a href="#">ホーム</a></li>
+            <li><a href="#map-section">地図</a></li>
+            <li><a href="#spots">名所一覧</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <!-- 地図 -->
+        <section id="map-section">
+          <h2>観光名所マップ</h2>
+          <div id="map"></div>
+        </section>
+
+        <!-- 観光スポット一覧 -->
+        <section id="spots">
+          <h2>おすすめスポット一覧</h2>
+
+          <div class="flexbox">
+
+            <div class="item">
+              <figure>
+                <img src="img/asakusa.jpg" alt="浅草寺">
+              </figure>
+              <h3>浅草寺</h3>
+              <p>都内で最も古い寺院。雷門の大きな赤提灯が目印で、多くの参拝客で賑わう。</p>
+            </div>
+
+            <div class="item">
+              <figure>
+                <img src="img/fuji.jpg" alt="富士山">
+              </figure>
+              <h3>富士山</h3>
+              <p>日本一の高さを誇る名峰。四季折々の美しい雪景色が世界中で親しまれる。</p>
+            </div>
+
+            <div class="item">
+              <figure>
+                <img src="img/kinkakuji.webp" alt="金閣寺">
+              </figure>
+              <h3>金閣寺（鹿苑寺）</h3>
+              <p>黄金色に輝く舎利殿が水面に映える京都の名所。優雅な日本庭園が広がる。</p>
+            </div>
+
+            <div class="item">
+              <figure>
+                <img src="img/dotonbori.jpg" alt="道頓堀">
+              </figure>
+              <h3>道頓堀</h3>
+              <p>巨大な看板が立ち並ぶ大阪の繁華街。たこ焼きなど大阪グルメを楽しめる。</p>
+            </div>
+
+            <div class="item">
+              <figure>
+                <img src="img/shirakawagou.jpg" alt="白川郷">
+              </figure>
+              <h3>白川郷 合掌造り集落</h3>
+              <p>かやぶき屋根の伝統的な家屋が残る集落。冬の幻想的な雪景色が有名。</p>
+            </div>
+
+            <div class="item">
+              <figure>
+                <img src="img/itsukushima.jpg" alt="厳島神社">
+              </figure>
+              <h3>厳島神社</h3>
+              <p>海の上に建つ社殿と大鳥居が印象的な名社。潮の満ち引きで表情が変わる。</p>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Google Maps APIの処理 -->
+    <script>
+      // 地図の初期化
+      let isMapInitialized = false;
+
+      function initMap() {
+        if (isMapInitialized) return;
+        const mapElement = document.getElementById("map");
+        if (!mapElement || typeof google === "undefined" || !google.maps) return;
+        isMapInitialized = true;
+
+        const map = new google.maps.Map(mapElement, {
+          zoom: 6,
+          center: { lat: 36.2048, lng: 138.2529 },
+          zoomControl: true,
+          mapTypeControl: true,
+          streetViewControl: false
+        });
+
+        // 情報ウィンドウ（吹き出し）
+        const infoWindow = new google.maps.InfoWindow();
+
+        // 観光スポットのマーカー
+        const marker = new google.maps.Marker({
+          position: { lat: 35.714765, lng: 139.796655 },
+          map: map,
+          title: "浅草寺",
+          photo: "img/asakusa.jpg",
+          description: "都内で最も古い寺院。雷門の大きな赤提灯が目印で、多くの参拝客で賑わう。"
+        });
+
+        const marker2 = new google.maps.Marker({
+          position: { lat: 35.360556, lng: 138.727778 },
+          map: map,
+          title: "富士山",
+          photo: "img/fuji.jpg",
+          description: "日本一の高さを誇る名峰。四季折々の美しい雪景色が世界中で親しまれる。"
+        });
+
+        const marker3 = new google.maps.Marker({
+          position: { lat: 35.03937, lng: 135.729243 },
+          map: map,
+          title: "金閣寺（鹿苑寺）",
+          photo: "img/kinkakuji.webp",
+          description: "黄金色に輝く舎利殿が水面に映える京都屈指の名所。優雅な日本庭園が広がる。"
+        });
+
+        const marker4 = new google.maps.Marker({
+          position: { lat: 34.669144, lng: 135.501852 },
+          map: map,
+          title: "道頓堀",
+          photo: "img/dotonbori.jpg",
+          description: "巨大な看板が立ち並ぶ大阪の繁華街。たこ焼きなど大阪グルメを楽しめる。"
+        });
+
+        const marker5 = new google.maps.Marker({
+          position: { lat: 36.256247, lng: 136.906566 },
+          map: map,
+          title: "白川郷 合掌造り集落",
+          photo: "img/shirakawagou.jpg",
+          description: "かやぶき屋根の伝統的な家屋が残る集落。冬の幻想的な雪景色が有名。"
+        });
+
+        const marker6 = new google.maps.Marker({
+          position: { lat: 34.295982, lng: 132.319762 },
+          map: map,
+          title: "厳島神社",
+          photo: "img/itsukushima.jpg",
+          description: "海の上に建つ社殿と大鳥居が印象的な名社。潮の満ち引きで表情が変わる。"
+        });
+
+        // おすすめスポット一覧のカード（HTML要素）
+        const spotItems = document.querySelectorAll(".item");
+        const markers = [marker, marker2, marker3, marker4, marker5, marker6];
+
+        // 各ピンと一覧カードのクリック連動
+        markers.forEach((m, i) => {
+          // ピンをクリックしたときに情報ウィンドウ（吹き出し）を開く
+          m.addListener("click", () => {
+            infoWindow.setContent(
+              '<h3>' + m.title + '</h3>' +
+              '<img src="' + m.photo + '" alt="' + m.title + '" style="max-width:200px;display:block;margin:8px auto;">' +
+              '<p>' + m.description + '</p>'
+            );
+            infoWindow.open(map, m);
+          });
+
+          // 一覧のカードをクリックしたときに該当ピンへ移動する
+          if (spotItems[i]) {
+            spotItems[i].addEventListener("click", () => {
+              // 1. 地図のあるエリアまで画面をスムーズにスクロールする
+              const mapSection = document.getElementById("map-section");
+              mapSection.scrollIntoView({ behavior: "smooth" });
+
+              // 2. 地図の中心をクリックしたスポットの位置へ移動する
+              map.panTo(m.getPosition());
+
+              // 3. 周辺がよく見えるように地図を拡大する
+              map.setZoom(10);
+
+              // 4. ピンの位置に情報ウィンドウを開く
+              infoWindow.setContent(
+                '<h3>' + m.title + '</h3>' +
+                '<img src="' + m.photo + '" alt="' + m.title + '" style="max-width:200px;display:block;margin:8px auto;">' +
+                '<p>' + m.description + '</p>'
+              );
+              infoWindow.open(map, m);
+            });
+          }
+        });
+
+        // 地図上をクリックしたときに情報ウィンドウを閉じる
+        map.addListener("click", () => {
+          infoWindow.close();
+        });
+      }
+
+      window.initMap = initMap;
+      window.addEventListener("load", () => {
+        initMap();
+      });
+    </script>
+
+  </body>
+
+</html>

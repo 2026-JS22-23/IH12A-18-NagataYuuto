@@ -1,0 +1,211 @@
+@charset "utf-8";
+
+body {
+  font-family: 'メイリオ', 'Meiryo', 'Hiragino Kaku Gothic Pro', 'Noto Sans JP', sans-serif;
+  background-color: #f8f5f8;
+  color: #222;
+  line-height: 1.6;
+}
+
+#wrap {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+/* ヘッダー */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 2px solid #9a0e21;
+}
+
+header h1 a {
+  text-decoration: none;
+  color: #9a0e21;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+header nav ul {
+  display: flex;
+  gap: 24px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #9a0e21;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+header nav ul li a:hover {
+  opacity: 0.7;
+}
+
+/* メイン */
+main {
+  padding: 30px 0;
+}
+
+#intro {
+  text-align: center;
+  padding: 20px 0 30px 0;
+}
+
+#intro h2 {
+  font-size: 1.8rem;
+  color: #222;
+  margin-bottom: 12px;
+}
+
+#intro p {
+  color: #555;
+  font-size: 1rem;
+}
+
+/* 地図*/
+#map-section {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+#map-section h2 {
+  font-size: 1.5rem;
+  color: #9a0e21;
+  margin-bottom: 16px;
+}
+#map {
+  width: 100%;
+  height: 480px;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  background-color: #eee;
+}
+
+/* 観光スポットのやつ */
+#spots h2 {
+  font-size: 1.5rem;
+  color: #9a0e21;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.item {
+  width: calc(33.333% - 14px);
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* 写真の枠 */
+.item figure,
+.photo-box {
+  width: 100%;
+  height: 200px;
+  background-color: #ede7ee;
+  overflow: hidden;
+  margin: 0;
+}
+
+.item figure img,
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* 本文 */
+.item-body {
+  padding: 16px;
+}
+
+.item > h3,
+.item-body h3 {
+  font-size: 1.15rem;
+  margin: 14px 16px 6px;
+  color: #222;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 12px;
+  background-color: #ffd8d8;
+  color: #9a0e21;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.item-body .location {
+  font-size: 0.85rem;
+  color: #9a0e21;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.item > p,
+.item-body p {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.5;
+  margin: 0 16px 16px;
+}
+
+/* Google Maps情報ウィンドウ */
+.info-box {
+  width: 240px;
+  font-family: inherit;
+}
+
+.info-photo {
+  width: 100%;
+  height: 120px;
+  background-color: #ede7ee;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.info-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.info-photo img[src=""],
+.info-photo img:not([src]) {
+  opacity: 0;
+}
+
+.info-box h3 {
+  font-size: 1.1rem;
+  color: #9a0e21;
+  margin-bottom: 6px;
+}
+
+.info-box p {
+  font-size: 0.85rem;
+  color: #333;
+  line-height: 1.45;
+  margin: 0;
+}
